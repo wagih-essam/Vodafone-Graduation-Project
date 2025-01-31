@@ -1,11 +1,17 @@
 package tests;
 
+import io.cucumber.java.hu.De;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
 public class TestCases extends BaseTest {
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Case One")
     public void RegisterUser() {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
@@ -21,6 +27,8 @@ public class TestCases extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test Case Two")
     public void LoginUserWithCorrectEmailAndPassword(){
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
@@ -30,6 +38,8 @@ public class TestCases extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Description("Test Case Three")
     public void LoginUserWithInCorrectEmailAndPassword() {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
@@ -39,6 +49,8 @@ public class TestCases extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Test Case Four")
     public void LogoutUser(){
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
@@ -48,6 +60,8 @@ public class TestCases extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Case Five")
     public void RegisterUserWithExistingEmail() {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
