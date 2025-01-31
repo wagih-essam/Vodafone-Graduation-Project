@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Suite" parallel="tests" thread-count="4">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="Regression Tests">
+        <classes>
+            <class name="tests.TestCases"/>
+        </classes>
+    </test>
+</suite>
