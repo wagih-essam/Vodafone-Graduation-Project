@@ -6,7 +6,7 @@ import pages.HomePage;
 public class TestCases extends BaseTest {
 
     @Test
-    public void RegisterUser() throws InterruptedException {
+    public void RegisterUser() {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
                 .goToSignUpLoginPage().verifySignUptitleIsVisible()
@@ -27,6 +27,15 @@ public class TestCases extends BaseTest {
                 .goToSignUpLoginPage().verifyLogintitleIsVisible()
                 .enterLoginData("testFake@vf.com" , "Pass@2020")
                 .verifyLoggedInVisibility().logoutFromAccount();
+    }
+
+    @Test
+    public void LoginUserWithInCorrectEmailAndPassword() {
+        HomePage homePage = new HomePage(driver);
+        homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
+                .goToSignUpLoginPage().verifyLogintitleIsVisible()
+                .enterLoginData("testNotValid@vf.com" , "Pass@2020")
+                .verifyInValidLoginAlert();
     }
 
 }

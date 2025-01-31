@@ -21,7 +21,6 @@ public class SignUpLoginPage extends BasePage {
     private final By loginButton = By.xpath("//div[@class='login-form']//button");
 
 
-
     public SignUpLoginPage verifySignUptitleIsVisible(){
         String newUserSignUp = "New User Signup!";
         String actialTitle = driver.findElement(newUserSignUpTitle).getText();
@@ -49,5 +48,6 @@ public class SignUpLoginPage extends BasePage {
         driver.findElement(loginButton).click();
         return new HomePage(driver);
     }
+
 
 }

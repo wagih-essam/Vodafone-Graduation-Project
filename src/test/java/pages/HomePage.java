@@ -17,6 +17,7 @@ public class HomePage extends BasePage {
     private final By accountDeletedStatusField = By.xpath("//h2[@data-qa='account-deleted']");
     private final By continueButton = By.xpath("//a[@data-qa='continue-button']");
     private final By logoutButton = By.xpath("//i[@class='fa fa-lock']");
+    private final By invalidLoginAlert = By.xpath("//form//p");
 
 
     public HomePage navigateToAutomationHomePage(){
@@ -60,6 +61,13 @@ public class HomePage extends BasePage {
 
     public HomePage logoutFromAccount(){
         driver.findElement(logoutButton).click();
+        return new HomePage(driver);
+    }
+
+    public HomePage verifyInValidLoginAlert(){
+        String invalidloginalert = "Your email or password is incorrect!";
+        String actualalert = driver.findElement(invalidLoginAlert).getText();
+        Assert.assertEquals(actualalert,invalidloginalert);
         return new HomePage(driver);
     }
 
