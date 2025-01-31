@@ -10,7 +10,7 @@ public class TestCases extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
                 .goToSignUpLoginPage().verifySignUptitleIsVisible()
-                .enterSignUpData("TestData","testtask@vf.com")
+                .enterSignUpData("TestData","testtask1@vf.com")
                 .verifyEnterAccountInformationVisibility()
                 .enterAccountInformation("Pass@2020", "10","May","1995")
                 .verifyAddressInformationVisibility()
@@ -24,7 +24,9 @@ public class TestCases extends BaseTest {
     public void LoginUserWithCorrectEmailAndPassword(){
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
-                .goToSignUpLoginPage();
+                .goToSignUpLoginPage().verifyLogintitleIsVisible()
+                .enterLoginData("testFake@vf.com" , "Pass@2020")
+                .verifyLoggedInVisibility().logoutFromAccount();
     }
 
 }

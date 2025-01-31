@@ -12,11 +12,11 @@ public class HomePage extends BasePage {
     }
 
     private final By signUpLoginButton = By.xpath("//a[@href='/login']");
-    private final By loggedInField = By.xpath("//i[@class='fa fa-user']");
+    private final By loggedInField = By.xpath("//li[10]//a/b");
     private final By deleteAccountButton = By.xpath("//i[@class='fa fa-trash-o']");
     private final By accountDeletedStatusField = By.xpath("//h2[@data-qa='account-deleted']");
-
     private final By continueButton = By.xpath("//a[@data-qa='continue-button']");
+    private final By logoutButton = By.xpath("//i[@class='fa fa-lock']");
 
 
     public HomePage navigateToAutomationHomePage(){
@@ -36,7 +36,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage verifyLoggedInVisibility(){
-        String loggedInText = "Logged in as test";
+        String loggedInText = "Logged in as TestData";
         String actualText = driver.findElement(loggedInField).getText();
         return new HomePage(driver);
     }
@@ -55,6 +55,11 @@ public class HomePage extends BasePage {
 
     public HomePage clickOnContinueButton(){
         driver.findElement(continueButton).click();
+        return new HomePage(driver);
+    }
+
+    public HomePage logoutFromAccount(){
+        driver.findElement(logoutButton).click();
         return new HomePage(driver);
     }
 
