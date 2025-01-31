@@ -46,4 +46,13 @@ public class TestCases extends BaseTest {
                 .enterLoginData("testFake@vf.com" , "Pass@2020")
                 .verifyLoggedInVisibility().logoutFromAccount();
     }
+
+    @Test
+    public void RegisterUserWithExistingEmail() {
+        HomePage homePage = new HomePage(driver);
+        homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
+                .goToSignUpLoginPage().verifySignUptitleIsVisible()
+                .enterSignUpData("TestData","testFake@vf.com")
+                .verifyInValidRegisterAlert();
+    }
 }

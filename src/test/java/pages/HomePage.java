@@ -19,7 +19,6 @@ public class HomePage extends BasePage {
     private final By logoutButton = By.xpath("//i[@class='fa fa-lock']");
     private final By invalidLoginAlert = By.xpath("//form//p");
 
-
     public HomePage navigateToAutomationHomePage(){
         driver.navigate().to(url);
         return this;

@@ -30,6 +30,7 @@ public class SignUpPage extends BasePage {
     private final By createAccountButton = By.xpath("//button[@data-qa='create-account']");
     private final By accountCreationStatusField = By.xpath("//h2[@data-qa='account-created']");
     private final By continueButton = By.xpath("//a[@data-qa='continue-button']");
+    private final By invalidRegisterAlert = By.xpath("//p[contains(text(), 'Email Address already exist!')]");
 
 
 
@@ -80,6 +81,13 @@ public class SignUpPage extends BasePage {
     }
     public HomePage clickOnContinueButton(){
         driver.findElement(continueButton).click();
+        return new HomePage(driver);
+    }
+
+    public HomePage verifyInValidRegisterAlert(){
+        String invalidregisteralert = "Email Address already exist!";
+        String actualalert = driver.findElement(invalidRegisterAlert).getText();
+        Assert.assertEquals(actualalert,invalidregisteralert);
         return new HomePage(driver);
     }
 }
