@@ -38,4 +38,12 @@ public class TestCases extends BaseTest {
                 .verifyInValidLoginAlert();
     }
 
+    @Test
+    public void LogoutUser(){
+        HomePage homePage = new HomePage(driver);
+        homePage.navigateToAutomationHomePage().verifyHomePageVisibility()
+                .goToSignUpLoginPage().verifyLogintitleIsVisible()
+                .enterLoginData("testFake@vf.com" , "Pass@2020")
+                .verifyLoggedInVisibility().logoutFromAccount();
+    }
 }
