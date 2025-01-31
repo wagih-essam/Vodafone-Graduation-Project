@@ -1,0 +1,61 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+public class HomePage extends BasePage {
+
+    String url = "https://automationexercise.com/";
+    public HomePage(WebDriver driver){
+        this.driver = driver;
+    }
+
+    private final By signUpLoginButton = By.xpath("//a[@href='/login']");
+    private final By loggedInField = By.xpath("//i[@class='fa fa-user']");
+    private final By deleteAccountButton = By.xpath("//i[@class='fa fa-trash-o']");
+    private final By accountDeletedStatusField = By.xpath("//h2[@data-qa='account-deleted']");
+
+    private final By continueButton = By.xpath("//a[@data-qa='continue-button']");
+
+
+    public HomePage navigateToAutomationHomePage(){
+        driver.navigate().to(url);
+        return this;
+    }
+    public SignUpLoginPage goToSignUpLoginPage(){
+        driver.findElement(signUpLoginButton).click();
+        return new SignUpLoginPage(driver);
+    }
+
+    public HomePage verifyHomePageVisibility(){
+        String automationPage = "Automation Exercise";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle , automationPage);
+        return new HomePage(driver);
+    }
+
+    public HomePage verifyLoggedInVisibility(){
+        String loggedInText = "Logged in as test";
+        String actualText = driver.findElement(loggedInField).getText();
+        return new HomePage(driver);
+    }
+
+    public HomePage clickOnDeleteAccountButton(){
+        driver.findElement(deleteAccountButton).click();
+        return new HomePage(driver);
+    }
+
+    public HomePage verifyAccountDeletedStatus(){
+        String accountStatus = "ACCOUNT DELETED!";
+        String actualStatus = driver.findElement(accountDeletedStatusField).getText();
+        Assert.assertEquals(actualStatus,accountStatus);
+        return new HomePage(driver);
+    }
+
+    public HomePage clickOnContinueButton(){
+        driver.findElement(continueButton).click();
+        return new HomePage(driver);
+    }
+
+}
