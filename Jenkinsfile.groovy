@@ -21,7 +21,7 @@ pipeline {
                         url: 'https://github.com/wagih-essam/Vodafone-Graduation-Project.git'
             }
         }
-        stage('Build') {
+        stage('Testing') {
             steps {
 
                 // Run Maven on a Unix agent.
