@@ -18,6 +18,7 @@ public class HomePage extends BasePage {
     private final By continueButton = By.xpath("//a[@data-qa='continue-button']");
     private final By logoutButton = By.xpath("//i[@class='fa fa-lock']");
     private final By invalidLoginAlert = By.xpath("//form//p");
+    private final By contactUsButton = By.xpath("//a[@href='/contact_us']");
 
     public HomePage navigateToAutomationHomePage(){
         driver.navigate().to(url);
@@ -68,6 +69,11 @@ public class HomePage extends BasePage {
         String actualalert = driver.findElement(invalidLoginAlert).getText();
         Assert.assertEquals(actualalert,invalidloginalert);
         return new HomePage(driver);
+    }
+
+    public ContactUsPage goToContactUsPage(){
+        driver.findElement(contactUsButton).click();
+        return new ContactUsPage(driver);
     }
 
 }
