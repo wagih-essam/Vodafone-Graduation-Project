@@ -13,7 +13,7 @@ public class TestCase_6 extends BaseTest {
     @Description("Test Case Two")
     public void ContactUsForm() {
         HomePage homePage = new HomePage(driver);
-        homePage.navigateToAutomationHomePage().goToContactUsPage()
+        homePage.navigateToAutomationHomePage().verifyHomePageVisibility().goToContactUsPage()
                 .verifygetInTouchTitleIsVisible().enterNameInContactUs("test")
                 .enterSubjectInContactUs("Test Subject").enterEmailInContactUs("test@VF.com")
                 .enterYourMessageInContactUs("testing").uploadFileInContactUs()
