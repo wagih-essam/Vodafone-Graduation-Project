@@ -10,10 +10,10 @@ import tests.BaseTest;
 public class TestCase_6 extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Description("Test Case Two")
+    @Description("Test Case Six")
     public void ContactUsForm() {
         HomePage homePage = new HomePage(driver);
-        homePage.navigateToAutomationHomePage().goToContactUsPage()
+        homePage.navigateToAutomationHomePage().verifyHomePageVisibility().goToContactUsPage()
                 .verifygetInTouchTitleIsVisible().enterNameInContactUs("test")
                 .enterSubjectInContactUs("Test Subject").enterEmailInContactUs("test@VF.com")
                 .enterYourMessageInContactUs("testing").uploadFileInContactUs()
