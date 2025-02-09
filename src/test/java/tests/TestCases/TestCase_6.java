@@ -10,7 +10,7 @@ import tests.BaseTest;
 public class TestCase_6 extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Description("Test Case Two")
+    @Description("Test Case Six")
     public void ContactUsForm() {
         HomePage homePage = new HomePage(driver);
         homePage.navigateToAutomationHomePage().verifyHomePageVisibility().goToContactUsPage()
