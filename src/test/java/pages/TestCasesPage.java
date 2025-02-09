@@ -12,7 +12,7 @@ public class TestCasesPage extends BasePage{
     private final By testCasesTitle = By.xpath("//h2[@class='title text-center']//b");
 
     public void verifyTestCasesTitle(){
-        String testCasesText = " TEST CASES";
+        String testCasesText = "TEST CASES";
         String actualText = driver.findElement(testCasesTitle).getText();
         Assert.assertEquals(actualText , testCasesText);
     }
