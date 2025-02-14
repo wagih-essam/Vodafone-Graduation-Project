@@ -20,6 +20,7 @@ public class HomePage extends BasePage {
     private final By invalidLoginAlert = By.xpath("//form//p");
     private final By contactUsButton = By.xpath("//a[@href='/contact_us']");
     private final By testCasesButton = By.xpath("//a[@href='/test_cases']");
+    private final By productsButton = By.xpath("//a[@href='/products']");
 
     public HomePage navigateToAutomationHomePage(){
         driver.navigate().to(url);
@@ -80,6 +81,11 @@ public class HomePage extends BasePage {
     public TestCasesPage goToTestCasesPage(){
         driver.findElement(testCasesButton).click();
         return new TestCasesPage(driver);
+    }
+
+    public ProductsPage goToProductsPage(){
+        driver.findElement(productsButton).click();
+        return new ProductsPage(driver);
     }
 
 }
