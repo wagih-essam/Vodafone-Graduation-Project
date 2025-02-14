@@ -24,6 +24,9 @@ public class ProductsPage extends BasePage{
         return By.xpath("//div[@class='col-sm-4']//p[contains(text(), '"+productName+"')]");
     }
     private final By productImage = By.xpath("//div[@class='view-product']//img");
+    private final By searchProduct = By.xpath("//input[@id='search_product']");
+    private final By searchIcon = By.xpath("//button[@id='submit_search']");
+    private final By searchResult = By.xpath("//div[@class='productinfo text-center']//p");
 
 
 
@@ -85,6 +88,22 @@ public class ProductsPage extends BasePage{
         // Optional: Verify alt text if needed
         Assert.assertEquals(actualAlt, expectedAlt, "Image alt text does not match.");
 
+        return new ProductsPage(driver);
+    }
+
+    public ProductsPage enterProductInSearch(String searchproduct){
+        driver.findElement(searchProduct).sendKeys(searchproduct);
+        return new ProductsPage(driver);
+    }
+
+    public ProductsPage clickOnSearchIcon(){
+        driver.findElement(searchIcon).click();
+        return new ProductsPage(driver);
+    }
+
+    public ProductsPage verifySearchResult(){
+        boolean isImageVisible = driver.findElement(searchResult).isDisplayed();
+        Assert.assertTrue(isImageVisible, "Product image is not visible.");
         return new ProductsPage(driver);
     }
 }
