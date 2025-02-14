@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
@@ -21,6 +23,10 @@ public class HomePage extends BasePage {
     private final By contactUsButton = By.xpath("//a[@href='/contact_us']");
     private final By testCasesButton = By.xpath("//a[@href='/test_cases']");
     private final By productsButton = By.xpath("//a[@href='/products']");
+    private final By subscriptionSection = By.xpath("//div[@class='footer-widget']//h2[contains(text(), 'Subscription')]");
+    private final By subscriptionEmailField = By.xpath("//input[@id='susbscribe_email']");
+    private final By subscriptionButton = By.xpath("//button[@id='subscribe']");
+    private final By subscriptionSuccessAlert = By.xpath("//div[@class='alert-success alert']");
 
     public HomePage navigateToAutomationHomePage(){
         driver.navigate().to(url);
@@ -86,6 +92,30 @@ public class HomePage extends BasePage {
     public ProductsPage goToProductsPage(){
         driver.findElement(productsButton).click();
         return new ProductsPage(driver);
+    }
+
+    public HomePage scrollDownToSubscription() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement subscription = driver.findElement(subscriptionSection);
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",subscription);
+        return new HomePage(driver);
+    }
+
+    public HomePage enterEmailForSubscription(String emailsubscription){
+        driver.findElement(subscriptionEmailField).sendKeys(emailsubscription);
+        return new HomePage(driver);
+    }
+
+    public HomePage clickOnSubscriptionButton(){
+        driver.findElement(subscriptionButton).click();
+        return new HomePage(driver);
+    }
+
+    public HomePage verifySuccessSubscriptionAlert(){
+        String subscriptionAlert = "You have been successfully subscribed!";
+        String actualText = driver.findElement(subscriptionSuccessAlert).getText();
+        Assert.assertEquals(actualText,subscriptionAlert);
+        return new HomePage(driver);
     }
 
 }
