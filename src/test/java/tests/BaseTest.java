@@ -1,5 +1,6 @@
 package tests;
 
+import driver.WebDriverSingleton;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -14,24 +15,26 @@ import java.time.Duration;
 import java.util.Properties;
 
 public class BaseTest {
-    public WebDriver driver;
+//    public WebDriver driver;
+    protected WebDriverSingleton driver;
+    protected static Properties properties;
     protected static Properties data;
     public Wait<WebDriver> wait;
 
-    @BeforeMethod
-    public void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NotFoundException.class)
-                .ignoring(ElementNotInteractableException.class)
-                .ignoring(AssertionError.class)
-                .ignoring(StaleElementReferenceException.class);
-    }
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
-    }
+//    @BeforeMethod
+//    public void setUp(){
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        wait = new FluentWait<>(driver)
+//                .withTimeout(Duration.ofSeconds(20))
+//                .pollingEvery(Duration.ofMillis(500))
+//                .ignoring(NotFoundException.class)
+//                .ignoring(ElementNotInteractableException.class)
+//                .ignoring(AssertionError.class)
+//                .ignoring(StaleElementReferenceException.class);
+//    }
+//    @AfterMethod
+//    public void tearDown(){
+//        driver.quit();
+//    }
 }
