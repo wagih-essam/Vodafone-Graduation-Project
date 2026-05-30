@@ -28,6 +28,7 @@ public class WebDriverSingleton {
             chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
             webDriver = new ChromeDriver(chromeOptions);
         }else if (browserName.equalsIgnoreCase("edge")){
+            WebDriverManager.edgedriver().setup();
             webDriver = new EdgeDriver();
         }
     }
@@ -48,6 +49,14 @@ public class WebDriverSingleton {
         webDriver.manage().window().maximize();
     }
     public static void close(){
-        webDriver.quit();
+        if (webDriver != null) {
+            try {
+                webDriver.quit();
+            } catch (Exception e) {
+                System.err.println("Error closing WebDriver: " + e.getMessage());
+            }
+            webDriver = null;
+        }
+        webDriverSingleton = null;
     }
 }

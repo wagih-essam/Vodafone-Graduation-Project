@@ -6,13 +6,20 @@
             preserve-order="true"
             name="C:/Users/Wageh Essam/IntelJIDEA_workspace/GraduationVodafone">
         <classes>
-            <class name="tests.TestCases">
-                <methods><include name="RegisterUser"/>
-                    <include name="LoginUserWithCorrectEmailAndPassword"/>
-                    <include name="LoginUserWithInCorrectEmailAndPassword"/>
-                    <include name="LogoutUser"/>
-                    <include name="RegisterUserWithExistingEmail"/>
-                </methods>
+            <class name="tests.TestCases.TestCase_1">
+                <methods><include name="RegisterUser"/></methods>
+            </class>
+            <class name="tests.TestCases.TestCase_2">
+                <methods><include name="LoginUserWithCorrectEmailAndPassword"/></methods>
+            </class>
+            <class name="tests.TestCases.TestCase_3">
+                <methods><include name="LoginUserWithInCorrectEmailAndPassword"/></methods>
+            </class>
+            <class name="tests.TestCases.TestCase_4">
+                <methods><include name="LogoutUser"/></methods>
+            </class>
+            <class name="tests.TestCases.TestCase_5">
+                <methods><include name="RegisterUserWithExistingEmail"/></methods>
             </class>
         </classes>
     </test>
